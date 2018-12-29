@@ -3,7 +3,6 @@ import moment from "moment";
 
 export let DatePicker = props => {
     if (props.days) {
-        console.log(props.selected);
         return (
             <div className="col-12">
                 <div className="card">
