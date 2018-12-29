@@ -1,0 +1,34 @@
+@import './colors';
+
+.t-center {
+    text-align: center;
+}
+
+.t-small {
+    font-size: .8rem;
+}
+
+.t-muted {
+    color: lighten($black, 50%);
+}
+
+.t-bold {
+    font-weight: 900;
+}
+
+.t-right {
+    text-align: right;
+}
+
+.server-icons {
+    font-size: 3rem;
+}
+
+a {
+    text-decoration: none;
+    color: $gray;
+}
+
+.t-large {
+    font-size: 3rem;
+}

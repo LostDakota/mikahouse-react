@@ -1,0 +1,61 @@
+@import './colors';
+
+header {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    padding: .5rem;
+    background-color: $blue;
+    text-align: center;
+    color: $white;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .25);
+}
+
+#header-spacer {
+    height: 2.5rem;
+    width: 100%;
+    top: 0;
+}
+
+nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background: linear-gradient($lightestgray, $white);
+    box-shadow: 0 -1px 20px rgba(0,0,0, .25);
+
+    ul {
+        list-style: none;
+        display: flex;
+
+        li {
+            flex: 1;
+            text-align: center;
+
+            &.nav-item {
+                i {
+                    display: block;
+                    font-size: 1.25rem;
+                }
+            }
+
+            a {
+                transition: 300ms;
+
+                &.active {                    
+                    color: $orange;
+                }                
+            }
+        }
+    }
+}
+
+#nav-spacer {
+    width: 100%;
+    min-width: 1px;
+    margin: 4rem 0;
+    position: relative;
+}

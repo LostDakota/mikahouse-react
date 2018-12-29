@@ -1,0 +1,64 @@
+@import 'mixins';
+
+$bp-large: 'only screen and (min-width: 1200px)';
+$bp-medium: 'only screen and (min-width: 992px) and (max-width: 1199px)';
+$bp-small: 'only screen and (min-width: 769px) and (max-width: 991px)';
+$bp-xsmall: 'only screen and (max-width: 768px)';
+
+$bps: (
+    xs: $bp-xsmall,     
+    sm: $bp-small,
+    md: $bp-medium,
+    lg: $bp-large
+);
+
+$cols: 12;
+
+.container {
+    position: relative;
+    max-width: 1290px;
+    width: 100%;
+    margin: 0 auto;
+
+    @extend %clearfix;    
+
+    .row {
+        width: 100%;
+        padding: 0 -10px;
+
+        .col {
+            width: 100%;
+        }
+
+        [class*='col-'] {
+            display: inline-block;
+            vertical-align: top;
+            width: 100%;
+            min-height: 1px;
+        }
+
+        @for $col from 1 through $cols {
+            .col-#{$col} {
+                width: 100% / $cols * $col;
+            }
+        }
+
+        @each $size, $bp in $bps {
+            @media #{$bp} {
+                @for $col from 1 through $cols {
+                    .col-#{$col}-#{$size} {
+                        width: 100% / $cols * $col;
+                    }
+                }
+            }            
+        }
+    }
+}
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}

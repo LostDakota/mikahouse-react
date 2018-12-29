@@ -1,0 +1,121 @@
+@import './colors';
+@import './animations';
+
+.dial {
+    width: 80%;
+    padding-bottom: 80%;
+    border-radius: 100%;
+    margin-left: auto;
+    margin-right: auto;    
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    @extend .shift;
+
+    .mask {
+        width: 80%;
+        padding-bottom: 80%;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        border-radius: 100vw;
+        @extend .shift;
+    }
+
+    .mask-2 {
+        @extend .mask;
+        width: 76%;
+        padding-bottom: 76%;
+        top: 13%;
+        left: 13%;
+        @extend .shift;
+    }
+
+    .control-mask {
+        position: absolute;
+        bottom: -50px;
+        left: 20%;
+        width: 60%;
+        height: 8rem;
+        border-radius: 100%;
+        text-align: center;
+        @extend .shift;
+
+        .control {
+            font-size: 1.5rem;
+            margin: 23% 2rem;
+            color: $white;
+            position: absolute;
+            z-index: 5;;
+
+            &.fa-chevron-down {
+                left: 2%;
+            }
+
+            &.fa-chevron-up {
+                right: 2%;
+            }
+        }
+
+        .divider {
+            width: 4px;
+            height: 100%;
+            background-color: $blackish;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            background-color: rgba(255, 255, 255, .25);
+        }        
+    }
+}
+
+.shadow {
+    @extend .dial;
+    z-index: 5;
+    position: absolute;
+    top: 2px;
+    box-shadow: inset 0 0 50px rgba($black, .8);
+    left: 10%;
+}
+
+.current-temperature {
+    margin-left: 1rem;
+    position: absolute;
+    top: calc(50% - 4rem);
+    width: 100%;
+    font-size: 6rem;
+    z-index: 5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.target-temperature {
+    position: absolute;
+    top: 63%;
+    width: 100%;
+    z-index: 5;
+}
+
+.ticks {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    position: absolute;    
+    background-color: rgba(255, 255, 255, .1);
+}
+
+.pin {
+    @extend .ticks;
+    height: 5px;
+    @extend .shift;
+    background: linear-gradient(to right, $white, rgba(0, 0, 0, 0) 30%);
+}
+
+.peg {
+    @extend .pin;
+    transition: 300ms ease-in-out;
+    background: linear-gradient(to right, $white, rgba(0, 0, 0, 0) 30%);
+}
+
+.therm-icon {
+    color: rgba(255, 255, 255, .9);
+}

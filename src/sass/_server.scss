@@ -1,0 +1,34 @@
+@import './colors';
+
+.bar {
+    width: 100%;
+    position: relative;
+    height: 2rem;
+    background-color: $blue;
+    margin-bottom: .5rem;
+    line-height: 2rem;
+    color: white;
+    font-weight: bold;
+    overflow: hidden;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .drive-letter {
+        float: left;
+        margin-left: .5rem;
+    }
+
+    .drive-percentage {
+        float: right;
+        margin-right: .5rem;
+    }
+
+    .used {
+        float: left;
+        height: 3rem;
+        background-color: $orange;
+        z-index: -1;
+    }
+}

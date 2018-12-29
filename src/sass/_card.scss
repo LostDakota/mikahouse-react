@@ -1,0 +1,29 @@
+@import './colors';
+
+.card {
+    border-radius: 2px;
+    box-shadow: 0 1px 3px $gray;
+    padding: .5rem;
+    background-color: $white;
+    margin: 5px;
+    position: relative;
+    clear: both;
+    overflow: auto;
+
+    &:hover {
+        box-shadow: 0 1px 5px $gray;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+.avatar-sm {
+    width: 3rem!important;
+    height: 3rem;
+}
+
+.card-buffer {
+    position: relative;
+}

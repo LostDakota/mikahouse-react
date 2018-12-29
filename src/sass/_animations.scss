@@ -1,0 +1,43 @@
+.fade-enter {
+    opacity: 0;
+    margin-top: 20px;
+    transform: scale(1.1);
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: 1s;
+    margin-top: 0;
+    transform: scale(1);
+}
+
+.fade-exit {
+    opacity: 0;
+}
+
+.loader {
+    font-size: 5rem;
+    margin-top: 30vh;
+    animation-name: orange-to-blue;
+    animation-duration: 3s;
+}
+
+@keyframes orange-to-blue {
+    0% {
+        color: $orange;
+        transform: rotate(0deg);
+    }
+
+    50% {
+        color: $blue;
+    }
+
+    100% {
+        color: $orange;
+        transform: rotate(360deg);
+    }
+}
+
+.shift {
+    transition: 1s ease-in-out;
+}

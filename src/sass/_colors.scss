@@ -1,0 +1,32 @@
+$white: #FFF;
+$black: #000;
+
+$darkgray: lighten($black, 40%);
+$gray: lighten($black, 60%);
+$lightgray: lighten($black, 70%);
+$lightergray: lighten($black, 80%);
+$lightestgray: lighten($black, 95%);
+
+$blue: #427CD3;
+$orange: #FF5722;
+$blackish: #3d3d3d;
+
+$primaries: (
+    'orange': $orange,
+    'blue': $blue,
+    'lightgray': $lightergray,
+    'lightergray': $lightergray,
+    'gray': $gray,
+    'blackish': $blackish,
+    'white': $white
+);
+
+@each $color, $value in $primaries {
+    .c-#{$color} {
+        color: $value;
+    }
+
+    .c-#{$color}-bg {
+        background-color: $value;
+    }
+}

@@ -1,0 +1,50 @@
+$directions: (
+    't': 'top',
+    'r': 'right',
+    'b': 'bottom',
+    'l': 'left'
+);
+
+@for $i from 1 through 5 {
+    .m-#{$i}-x {
+        margin: 0 $i * 1px;
+    }
+
+    .m-#{$i}-y {
+        margin: $i * 1px 0;
+    }
+
+    .m-#{$i} {
+        margin: $i * 1px;
+    }
+
+    .p-#{$i}-x {
+        padding: 0 $i * 1px;
+    }
+
+    .p-#{$i}-y {
+        padding: $i * 1px 0;
+    }
+
+    .p-#{$i} {
+        padding: $i * 1px;
+    }
+
+    @each $designation, $direction in $directions {
+        .m-#{$i}-#{$designation} {
+            margin-#{$direction}: $i * 1px;
+        }
+
+        .p-#{$i}-#{$designation} {
+            padding-#{$direction}: $i * 1px;
+        }
+    }    
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
