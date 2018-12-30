@@ -27,11 +27,9 @@
 
   <script>
     var authenticated = localStorage.getItem('authenticated');
-    if (authenticated) {
-      if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && authenticated) {
         navigator.serviceWorker.register('/sw.js');
       }
-    }
   </script>
 
 </body>
