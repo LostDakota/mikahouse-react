@@ -64,10 +64,12 @@ class HomeContainer extends Component {
 
         Promise.all([users, event, stats, newest, events])
             .then(data => {
-                this.setState({ loading: false });
+                localStorage.setItem(authenticated, true);
+                this.setState({ loading: false });                
             })
             .catch(err => {
-                window.location.href = '/login';
+                localStorage.setItem(authenticated, false);
+                window.location.href = '/login';                
             })
 
     }
