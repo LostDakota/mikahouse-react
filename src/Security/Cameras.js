@@ -9,7 +9,7 @@ let cameraCards = props => {
                 <img alt="Right Now" src={`${Config.Host}/${cam}`}></img>
             </div>
         );
-    })
+    });
 }
 
 export const Cameras = props => {
