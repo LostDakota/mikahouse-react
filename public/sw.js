@@ -1,4 +1,4 @@
-var cacheName = 'v2::mika.house';
+var cacheName = 'v3::mika.house';
 
 var filesToCache = [
   'https://use.fontawesome.com/releases/v5.6.3/css/all.css',

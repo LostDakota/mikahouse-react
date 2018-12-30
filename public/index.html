@@ -23,15 +23,13 @@
     document.addEventListener('click', function (e) {
       navigator.vibrate('50');
     });
-  </script>
 
-  <script>
     var authenticated = localStorage.getItem('authenticated');
     if ('serviceWorker' in navigator && authenticated) {
-        navigator.serviceWorker.register('/sw.js');
-      }
+      navigator.serviceWorker.register('/sw.js');
+    }
   </script>
-
+  
 </body>
 
 </html>
