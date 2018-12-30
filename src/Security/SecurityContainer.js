@@ -49,32 +49,19 @@ class SecurityContainer extends Component {
                 return true;
             });
 
-        let camera1 = fetch(`${Config.Api}/security/camera/1`)
+        let cameras = fetch(`${Config.Api}/security/cameras`)
             .then(response => {
-                setTimeout(() => {
-                    return response;
-                }, 1000);                
-            });
-
-        let camera2 = fetch(`${Config.Api}/security/camera/2`)
-            .then(response => {
-                setTimeout(() => {
-                    return response;
-                }, 1000);
-            });
-
-        let cameras = [camera1, camera2];        
-
-        Promise.all([status, eventCount, cameras, cameras])
+                return response.json();              
+            })
             .then(data => {
+                this.setState({ cameras: data });
+                return true;
+            })
+
+        Promise.all([status, eventCount, cameras])
+            .then(data => {
+                console.log(this.state);
                 this.setState({ loading: false });
-                this.setState(
-                    { 
-                        cameras: [
-                            `/images/security/1.jpg?stamp=${new Date().getTime()}`,
-                            `/images/security/2.jpg?stamp=${new Date().getTime()}`
-                        ] 
-                })
             })
     }
 
