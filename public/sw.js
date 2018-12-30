@@ -1,7 +1,6 @@
 var cacheName = 'v1::mika.house';
 
 var filesToCache = [
-  '/',
   'https://use.fontawesome.com/releases/v5.6.3/css/all.css',
   'https://fonts.googleapis.com/css?family=Raleway'
 ];
