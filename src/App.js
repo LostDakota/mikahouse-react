@@ -4,7 +4,6 @@ import Routes from "./Routes";
 
 import './App.scss';
 
-
 const navList = [
   { name: 'Home', path: '/', icon: 'fa-home' },
   { name: 'Media', path: '/media', icon: 'fa-play-circle' },
@@ -36,18 +35,17 @@ const Navigation = () => (
 );
 
 class App extends Component {
-
   render() {
     return (
-      <>
+      <>        
         <header className="t-bold">Home</header>
         <div id="header-spacer"></div>
         <div className="container">
-          <div className="row" style={{overflow: 'hidden'}}>
-            <Routes />            
+          <div className="row" style={{ overflow: 'hidden' }}>
+            <Routes />
             <div id="nav-spacer"></div>
-          </div>          
-        </div>        
+          </div>
+        </div>
         <Navigation />
       </>
     );

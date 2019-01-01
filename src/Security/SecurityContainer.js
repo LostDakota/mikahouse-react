@@ -60,7 +60,6 @@ class SecurityContainer extends Component {
 
         Promise.all([status, eventCount, cameras])
             .then(data => {
-                console.log(this.state);
                 this.setState({ loading: false });
             })
     }

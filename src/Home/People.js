@@ -17,15 +17,9 @@ let buildPeopleCards = people => {
 
 const People = props => {
     return (
-        <div className="col-12-xs col-6-sm col-6-md col-4-lg">
-            <div className="row">
-                <div className="col-12">
-                    <p className="t-center t-bold">{title}</p>
-                </div>
-            </div>
-            <div className="row">
-                {buildPeopleCards(props.people)}
-            </div>
+        <div className="col-12-xs col-6-sm col-6-md col-6-lg">
+            <p className="t-center t-bold">{title}</p>
+            {buildPeopleCards(props.people)}
         </div>
     )
 }

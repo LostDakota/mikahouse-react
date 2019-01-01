@@ -6,15 +6,9 @@ class ServerStats extends Component {
     render() {
         if (this.props.stats) {
             return (
-                <div className="col-12-xs col-6-sm col-6-md col-4-lg">
-                    <div className="row">
-                        <div className="col-12">
-                            <p className="t-center t-bold">{title}</p>
-                        </div>
-                    </div>
-                    <div className="row">
-                        {buildStats(this.props.stats)}
-                    </div>
+                <div className="col-12-xs col-6-sm col-6-md col-6-lg">
+                    <p className="t-center t-bold">{title}</p>
+                    {buildStats(this.props.stats)}
                 </div>
             )
         }

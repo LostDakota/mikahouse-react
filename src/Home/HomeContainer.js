@@ -11,11 +11,16 @@ import Newest from "./Newest";
 import Events from "./Events";
 
 class HomeContainer extends Component {
-    state = {};
+    state = {
+        users: [],
+        lastevent: {},
+        stats: [],
+        newest: [],
+        events: []
+    };
 
     componentDidMount() {
         TitleService.SetTitle('Home');
-        this.setState({ loadin: true });
 
         let users = fetch(`${Config.Api}/users/list`)
             .then(data => {

@@ -33,15 +33,9 @@ let buildStats = notifications => {
 const ServerStats = props => {
     if (props.events) {
         return (
-            <div className="col-12-xs col-6-sm col-6-md col-4-lg">
-                <div className="row">
-                    <div className="col-12">
-                        <p className="t-center t-bold">{title}</p>
-                    </div>
-                </div>
-                <div className="row">
-                    {buildStats(props.events)}
-                </div>
+            <div className="col-12-xs col-6-sm col-6-md col-6-lg">
+                <p className="t-center t-bold">{title}</p>
+                {buildStats(props.events)}
             </div>
         )
     }
