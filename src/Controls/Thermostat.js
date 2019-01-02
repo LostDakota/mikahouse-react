@@ -40,7 +40,7 @@ const Thermostat = props => {
                         <div className={`control-mask ${colorEvaluator(props.stat.heater)}`}>
                             <i className="fa fa-chevron-down control" onClick={() => { props.stat.changeTemp(-1) }}></i>
                             <i className="fa fa-chevron-up control" onClick={() => { props.stat.changeTemp(1) }}></i>
-                            <div className="divider"></div>props.stats.changeTemp !== undefinded ?
+                            <div className="divider"></div>
                         </div>
 
                         {pin(props.stat.current, 'pin')}

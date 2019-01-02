@@ -5,7 +5,7 @@ import Config from "../Shared/Config";
 const title = 'Latest Show';
 
 const Newest = props => {
-    if(props.newest) {
+    if(props.newest.length > 0) {
         return (
             <div className="col-12-xs col-6-sm col-6-md col-6-lg">
                 <div className="row">

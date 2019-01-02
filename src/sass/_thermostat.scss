@@ -33,11 +33,12 @@
 
     .control-mask {
         position: absolute;
-        bottom: -50px;
+        // bottom: -50px;
+        margin-top: 75%;
         left: 20%;
         width: 60%;
         height: 8rem;
-        border-radius: 100%;
+        border-radius: 1000px;
         text-align: center;
         @extend .shift;
 

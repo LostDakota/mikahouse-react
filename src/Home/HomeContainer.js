@@ -70,11 +70,11 @@ class HomeContainer extends Component {
         Promise.all([users, event, stats, newest, events])
             .then(data => {
                 localStorage.setItem('authenticated', true);
-                this.setState({ loading: false });                
+                this.setState({ loading: false });
             })
             .catch(err => {
                 localStorage.setItem('authenticated', false);
-                window.location.href = '/login';                
+                window.location.href = '/login';
             })
 
     }
@@ -82,13 +82,13 @@ class HomeContainer extends Component {
     render() {
         if (this.state.loading === false) {
             return (
-                <>
+                <span>
                     <People people={this.state.users} />
                     <LastEvent event={this.state.lastevent} />
                     <ServerStats stats={this.state.stats} />
                     <Newest newest={this.state.newest} />
                     <Events events={this.state.events} />
-                </>
+                </span>
             )
         }
         return (<Loader />);

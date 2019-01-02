@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+// import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import HomeContainer from './Home/HomeContainer';
 import MediaContainer from './Media/MediaContainer';
@@ -34,7 +34,7 @@ const Outlet = () => (
 //     <Route render={({ location }) => {
 //       return (
 //         <TransitionGroup>
-//           <CSSTransition key={location.key} timeout={450} classNames="fade">
+//           <CSSTransition key={location.key} timeout={10000} classNames="fade">
 //             <Switch location={location}>
 //               <Route exact path="/" component={HomeContainer}></Route>
 //               <Route path="/media" component={MediaContainer}></Route>
