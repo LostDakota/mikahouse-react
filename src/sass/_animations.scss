@@ -42,3 +42,17 @@
 .shift {
     transition: 1s ease-in-out;
 }
+
+.blur-mask {
+    overflow: hidden;
+
+}
+
+.security-images {
+    transition: all 1s ease-in-out;
+
+    &.blur {
+        filter: blur(50px) brightness(50%);
+        -webkit-filter: blur(50px) brightness(50%);
+    }
+}

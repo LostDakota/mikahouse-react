@@ -13,7 +13,10 @@ import Events from "./Events";
 class HomeContainer extends Component {
     state = {
         users: [],
-        lastevent: {},
+        lastevent: {
+            image: '/images/security/last.jpg',
+            time: 'Loading...'
+        },
         stats: [],
         newest: [],
         events: []
