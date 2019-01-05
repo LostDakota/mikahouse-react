@@ -7,7 +7,9 @@ let cameraCards = props => {
     return props.cameras.map((cam, i) => {
         return (
             <div key={i} className="card">
-                <img id={`camera-${i}`} className={'security-images blur'} alt="Right Now" src={`/images/fallback${i}.jpg`} onLoad={ImageTransition(`camera-${i}`, `${Config.Host}${cam}`)} />
+                <div className="blur-mask">
+                    <img id={`camera-${i}`} className={'security-images blur'} alt="Right Now" src={`/images/fallback${i}.jpg`} onLoad={ImageTransition(`camera-${i}`, `${Config.Host}${cam}`)} />
+                </div>
             </div>
         );
     });
