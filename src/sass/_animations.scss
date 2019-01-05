@@ -49,7 +49,7 @@
 }
 
 .security-images {
-    transition: all 1s ease-in-out;
+    transition: all .5s ease-in-out;
 
     &.blur {
         filter: blur(10px) brightness(50%);
