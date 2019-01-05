@@ -1,9 +1,11 @@
-var cacheName = 'v4::mika.house';
+var cacheName = 'v5::mika.house';
 
 var filesToCache = [
   'https://use.fontawesome.com/releases/v5.6.3/css/all.css',
   'https://fonts.googleapis.com/css?family=Raleway',
-  '/images/security/last.jpg'
+  '/images/security/last.jpg',
+  '/images/fallback0.jpg',
+  '/images/fallback1.jpg'
 ];
 
 var cacheableAssetTypes = [
