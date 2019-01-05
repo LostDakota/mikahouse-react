@@ -1,4 +1,4 @@
-var cacheName = 'v5::mika.house';
+var cacheName = 'v7::mika.house';
 
 var filesToCache = [
   'https://use.fontawesome.com/releases/v5.6.3/css/all.css',
@@ -29,6 +29,7 @@ self.addEventListener('fetch', event => {
           .then(resource => {
             var url = event.request.url;
             if(url && evaluateCacheable(url)) {
+              window.localStorage.setItem(url, new Date());
               cache.put(event.request, resource.clone())
                 .catch(err => {})
             }
