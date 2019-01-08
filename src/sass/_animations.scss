@@ -50,8 +50,10 @@
 
 .security-images {
     transition: all .5s ease-in-out;
+    transform: scale(1);
 
     &.blur {
+        transform: scale(1.1);
         filter: blur(10px) brightness(50%);
         -webkit-filter: blur(10px) brightness(50%);
     }
