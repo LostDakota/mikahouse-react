@@ -38,8 +38,8 @@ const Thermostat = props => {
                     <div className={`dial ${colorEvaluator(props.stat.heater)}`}>
                         {ticksArray}
                         <div className={`control-mask ${colorEvaluator(props.stat.heater)}`}>
-                            <i className="fa fa-chevron-down control" onClick={() => { props.stat.changeTemp(-1) }}></i>
-                            <i className="fa fa-chevron-up control" onClick={() => { props.stat.changeTemp(1) }}></i>
+                            <i className={`fa fa-chevron-down control ${props.loading ? 'disabled' : ''}`} onClick={() => { props.stat.changeTemp(-1) }}></i>
+                            <i className={`fa fa-chevron-up control ${props.loading ? 'disabled' : ''}`} onClick={() => { props.stat.changeTemp(1) }}></i>
                             <div className="divider"></div>
                         </div>
 

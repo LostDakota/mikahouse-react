@@ -23,10 +23,8 @@
     document.addEventListener('click', function (e) {
       navigator.vibrate('50');
     });
-
-    var authenticated = localStorage.getItem('authenticated');
-    if ('serviceWorker' in navigator && authenticated) {
-      navigator.serviceWorker.register('/sw.js');
+    if(window.localStorage.getItem('authenticated') === true) {
+      ServiceWorker.register('/sw.js');
     }
   </script>
 

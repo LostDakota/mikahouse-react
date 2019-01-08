@@ -1,4 +1,4 @@
-var cacheName = 'v7::mika.house';
+var cacheName = 'v8::mika.house';
 
 var filesToCache = [
   '//use.fontawesome.com/releases/v5.6.3/css/all.css',
@@ -53,7 +53,7 @@ self.addEventListener('activate', function (event) {
 });
 
 var evaluateCacheable = function(url) {
-  if(url.indexOf('?') !== -1)
+  if(url.indexOf('?') !== -1 || url.indexOf('mp4') > -1)
     return false;
   var shouldCache = cacheableAssetTypes.map(type => url.indexOf(type) != -1);
   return shouldCache.includes(true);

@@ -9,6 +9,7 @@ import SecurityContainer from './Security/SecurityContainer';
 import ServicesContainer from './Services/ServicesContainer';
 import EventsContainer from './Events/EventsContainer';
 import SecurityEventsContainer from "./Events/SecurityEventsContainer";
+import LoginContainer from "./LoginContainer";
 
 const Outlet = () => (
   <>
@@ -22,6 +23,7 @@ const Outlet = () => (
           <Route path="/security/events" component={SecurityEventsContainer}></Route>
           <Route path="/services" component={ServicesContainer}></Route>
           <Route path="/events" component={EventsContainer}></Route>
+          <Route path="/login" component={LoginContainer}></Route>
         </Switch>
       )
     }}>
@@ -52,7 +54,7 @@ const Outlet = () => (
 //   </>
 // )
 
-const Routes = () => {
+const Routes = props => {
   return (
     <>
       <Outlet />

@@ -43,40 +43,38 @@ const doorIcons = (step) => {
 let controlTimeout = null;
 
 class ControlsContainer extends Component {
-    state = {};
+    state = {
+        thermostat: {
+            target: 70,
+            heater: false,
+            current: 70
+        },
+        loading: true
+    };
     mounted = true;
-    init = {
-        target: 70,
-        heater: false,
-        current: 70
-    }
+    
 
     componentDidMount() {
         TitleService.SetTitle('Controls');
-        this.setState({ loading: true });
-        this.setState({ thermostat: this.init });
-        this.setState({ mounted: true });
 
         getThermostat()
             .then(data => {
-                if (this.mounted) {
-                    data['changeTemp'] = val => {
-                        clearTimeout(controlTimeout);
-                        let temp = this.state;
-                        temp.thermostat.target = temp.thermostat.target + val;
-                        this.setState(temp);
-                        controlTimeout = setTimeout(() => {
-                            this.setState({ loading: true })
-                            fetch(`${Config.Api}/control/thermostat/${temp.thermostat.target}`, { method: 'POST' })
-                                .then(() => {
-                                    this.setState({ loading: false })
-                                    setTimeout(() => {getThermostat()}, 3000);
-                                });
-                        }, 2000)
-                    }
-                    this.setState({ loading: false });
-                    this.setState({ thermostat: data });
+                data['changeTemp'] = val => {
+                    clearTimeout(controlTimeout);
+                    let temp = this.state.thermostat;
+                    temp.target = temp.target + val;
+                    this.setState({thermostat: temp});
+                    controlTimeout = setTimeout(() => {
+                        this.setState({ loading: true })
+                        fetch(`${Config.Api}/control/thermostat/${temp.target}`, { method: 'POST' })
+                            .then(() => {
+                                this.setState({ loading: false })
+                                setTimeout(() => {getThermostat()}, 3000);
+                            });
+                    }, 2000)
                 }
+                this.setState({ loading: false });
+                this.setState({ thermostat: data });
             })
 
         this.setState({

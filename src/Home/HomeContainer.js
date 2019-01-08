@@ -85,13 +85,13 @@ class HomeContainer extends Component {
     render() {
         if (this.state.loading === false) {
             return (
-                <span>
+                <>
                     <People people={this.state.users} />
                     <LastEvent event={this.state.lastevent} />
                     <ServerStats stats={this.state.stats} />
                     <Newest newest={this.state.newest} />
                     <Events events={this.state.events} />
-                </span>
+                </>
             )
         }
         return (<Loader />);
