@@ -9,7 +9,7 @@ var filesToCache = [
 ];
 
 var cacheableAssetTypes = [
-  'jpg', 'png', 'webp', 'js', 'css'
+  'jpg', 'png', 'webp', 'js', 'css', 'woff', 'woff2'
 ]
 
 self.addEventListener('install', e => {
