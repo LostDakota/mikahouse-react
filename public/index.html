@@ -23,9 +23,6 @@
     document.addEventListener('click', function (e) {
       navigator.vibrate('50');
     });
-    if(window.localStorage.getItem('authenticated') === true) {
-      ServiceWorker.register('/sw.js');
-    }
   </script>
 
 </body>
