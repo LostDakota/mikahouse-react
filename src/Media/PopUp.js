@@ -6,7 +6,8 @@ export const PopUp = props => {
         return (
             <>
                 <div onClick={props.toggle} className={`shade ${props.display ? 'show' : ''}`}>
-                    <div className="col-xs-12 offset-sm-3 col-md-6">
+                    <div class="d-none-sm col-3"></div>
+                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
                         <div className='card'>
                             <img alt={props.show.name} src={`${Config.Host}${props.show.fanart}`} />
                             <p className='t-center m-5-b'>{props.show.showtitle} - {props.show.name}</p>
