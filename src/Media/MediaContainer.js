@@ -61,7 +61,7 @@ class MediaContainer extends Component {
             return (
                 <>
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col-xs-6 col-12">
                             <p className="t-center t-bold">Plex</p>
                         </div>
                     </div>
