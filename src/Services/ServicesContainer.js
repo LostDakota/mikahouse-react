@@ -51,31 +51,29 @@ class ServicesContainer extends Component {
     render() {
         if (!this.state.loading) {
             return (
-                <>
+                <div class="row">
                     <ServerStats stats={this.state.stats} />                    
-                    <div className="row">
-                        <div className="col-12">
-                            <p className="t-center t-bold">Disk Usage</p>
-                            <div className="card">
-                                <Drives drives={this.state.drives} />
-                            </div>
+                    
+                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
+                        <p className="t-center t-bold">Disk Usage</p>
+                        <div className="card">
+                            <Drives drives={this.state.drives} />
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-12">
-                            <p className="t-center t-bold">Connected Devices</p>
-                            <div className="card">
-                                <div className="row">
-                                    <div className="col-2 t-bold">IP</div>
-                                    <div className="col-5 t-bold">Name</div>
-                                    <div className="col-5 t-bold">Last Connection</div>
-                                    <hr />
-                                </div>
-                                <Devices devices={this.state.devices} />
+
+                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
+                        <p className="t-center t-bold">Connected Devices</p>
+                        <div className="card">
+                            <div className="row">
+                                <div className="col-2 t-bold">IP</div>
+                                <div className="col-5 t-bold">Name</div>
+                                <div className="col-5 t-bold">Last Connection</div>
+                                <hr />
                             </div>
+                            <Devices devices={this.state.devices} />
                         </div>
                     </div>
-                </>
+                </div>
             )
         }
         return (<Loader />);

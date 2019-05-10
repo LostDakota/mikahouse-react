@@ -59,27 +59,24 @@ class MediaContainer extends Component {
     render() {
         if (!this.state.loading) {
             return (
-                <>
-                    <div className="row">
-                        <div className="col-xs-6 col-12">
-                            <p className="t-center t-bold">Plex</p>
-                        </div>
+                <div class="row">
+                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
+                        <p className="t-center t-bold">Plex</p>
+                        <Plex plex={this.state.plex} />
                     </div>
-                    <Plex plex={this.state.plex} />
-                    <div className="row">
-                        <div className="col-12">
-                            <p className="t-center t-bold">Newest Shows</p>
-                        </div>
+                    
+                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
+                        <p className="t-center t-bold">Newest Shows</p>
+                        <Shows toggle={this.toggleModal} shows={this.state.newest} />
                     </div>
-                    <Shows toggle={this.toggleModal} shows={this.state.newest} />
-                    <div className="row">
-                        <div className="col-12">
-                            <p className="t-center t-bold">Newest Movies</p>
-                        </div>
+                    
+                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
+                        <p className="t-center t-bold">Newest Movies</p>
+                        <Movies movies={this.state.movies} />
                     </div>
-                    <Movies movies={this.state.movies} />
+                    
                     <PopUp toggle={this.toggleModal} display={this.state.showModal} show={this.state.show} />
-                </>
+                </div>
             )
         }
         return (

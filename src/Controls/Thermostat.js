@@ -30,7 +30,7 @@ buildTicks();
 
 const Thermostat = props => {
     return (
-        <div className="col-12">
+        <div className="col-12-xs col-6-sm col-6-md col-6-lg">
             <p className="t-center t-bold">Thermostat</p>
             <div className="card">
                 <div className="card-buffer">

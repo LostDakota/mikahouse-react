@@ -67,21 +67,21 @@ class SecurityContainer extends Component {
     render() {
         if (!this.state.loading) {
             return (
-                <>
-                    <div className="row">
-                        <div className="col-12">
-                            <p className="t-center t-bold">System Status</p>
-                        </div>
+                <div class="row">
+                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
+                        <p className="t-center t-bold">System Status</p>
+                        <div class="row">
+                            <ServerStatus status={this.state.status} toggle={this.toggleSecurity} />
+                            <Events events={this.state.eventCount} />
+                        </div>                        
                     </div>
-                    <ServerStatus status={this.state.status} toggle={this.toggleSecurity} />
-                    <Events events={this.state.eventCount} />
-                    <div className="row">
-                        <div className="col-12">
-                            <p className="t-center t-bold">Current Views</p>
-                        </div>
+
+                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
+                        <p className="t-center t-bold">Current Views</p>
+                        <Cameras cameras={this.state.cameras} />
                     </div>
-                    <Cameras cameras={this.state.cameras} />
-                </>
+                    
+                </div>
             );
         }
         return (<Loader />);

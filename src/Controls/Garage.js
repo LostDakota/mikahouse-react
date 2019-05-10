@@ -2,7 +2,7 @@ import React from "react";
 
 export const Garage = props => {
     return (
-        <div className="col-12">
+        <div className="col-12-xs col-6-sm col-6-md col-6-lg">
             <p className="t-center t-bold">Garage</p>
             <div className="card t-center" onClick={props.toggle}>
                 <i id="door-icon" className="fa fa-warehouse server-icons m-5-y c-lightgray"></i>

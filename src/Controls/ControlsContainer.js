@@ -98,10 +98,10 @@ class ControlsContainer extends Component {
     render() {
         if (this.state.thermostat) {
             return (
-                <>
+                <div class="row">
                     <Thermostat stat={this.state.thermostat} loading={this.state.loading} />
                     <Garage toggle={this.state.toggleDoor} />
-                </>
+                </div>
             )
         }
 

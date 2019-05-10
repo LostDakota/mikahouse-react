@@ -18,7 +18,7 @@ const buildCards = events => {
     }
     return events.map((event, i) => {
         return (
-            <div key={i} className="col-12">
+            <div key={i} className="col-12-xs col-6-sm col-6-md col-6-lg">
                 <div className="card">
                     <i className={`fa ${EvaluateIcon(event.notif)} right ${IconColor(event.notif)} t-large`}></i>
                     <img className="avatar-sm left m-5-r" alt={event.image} src={`${Config.Images}/${event.image}.webp`} />
