@@ -3,12 +3,12 @@
 .card {
     border-radius: 2px;
     box-shadow: 0 1px 3px $gray;
-    padding: .5rem;
     background-color: $white;
-    margin: 5px;
     position: relative;
     clear: both;
     overflow: auto;
+    box-sizing: border-box;
+    padding: .5rem;
 
     &:hover {
         box-shadow: 0 1px 5px $gray;
@@ -17,11 +17,19 @@
     img {
         width: 100%;
     }
+
+    p {
+        line-height: normal;
+    }
 }
 
 .avatar-sm {
     width: 3rem!important;
     height: 3rem;
+}
+
+.people-avatar {
+    width: 100%;
 }
 
 .card-buffer {

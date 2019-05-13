@@ -52,7 +52,12 @@ class ControlsContainer extends Component {
         loading: true
     };
     mounted = true;
-    
+
+    componentDidUpdate() {
+        setTimeout(() => {
+            window.resizeAllGridItems();
+        }, 1000);
+    }
 
     componentDidMount() {
         TitleService.SetTitle('Controls');
@@ -98,10 +103,10 @@ class ControlsContainer extends Component {
     render() {
         if (this.state.thermostat) {
             return (
-                <div class="row">
+                <>
                     <Thermostat stat={this.state.thermostat} loading={this.state.loading} />
-                    <Garage toggle={this.state.toggleDoor} />
-                </div>
+                    <Garage toggle={this.state.toggleDoor} />     
+                </>
             )
         }
 

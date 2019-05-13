@@ -26,6 +26,12 @@ class SecurityEventsContainer extends Component {
             })
     }
 
+    componentDidUpdate() {
+        setTimeout(function(){
+            window.resizeAllGridItems();
+        }, 1000);
+    }
+    
     componentDidMount() {
         TitleService.SetTitle("Captured Events");
         this.setState({ loading: true });

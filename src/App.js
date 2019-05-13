@@ -41,7 +41,7 @@ class App extends Component {
         <header className="t-bold">Home</header>
         <div id="header-spacer"></div>
         <div className="container">
-          <div className="row" style={{ overflow: 'hidden' }}>
+          <div className="grid" style={{ overflow: 'hidden' }}>
             <Routes />
             <div id="nav-spacer"></div>
           </div>

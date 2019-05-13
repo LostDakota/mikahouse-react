@@ -28,14 +28,10 @@ let statusText = status => {
 export let ServerStatus = props => {
     if (props.status) {
         return (
-            <div className="col-6">
-                <div className="card t-center">
-                    <span onClick={props.toggle}>
-                        <i className={buildClasses(props.status)}></i>
-                        <p className="m-5-t t-small t-muted">{statusText(props.status.result)}</p>
-                    </span>
-                </div>
-            </div>
+            <span className="t-center" onClick={props.toggle}>
+                <i className={buildClasses(props.status)}></i>
+                <p className="m-5-t t-small t-muted">{statusText(props.status.result)}</p>
+            </span>
         )
     }
     return '';

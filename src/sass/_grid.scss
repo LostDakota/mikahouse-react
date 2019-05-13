@@ -1,16 +1,5 @@
 @import 'mixins';
-
-$bp-large: 'only screen and (min-width: 1200px)';
-$bp-medium: 'only screen and (min-width: 992px) and (max-width: 1199px)';
-$bp-small: 'only screen and (min-width: 769px) and (max-width: 991px)';
-$bp-xsmall: 'only screen and (max-width: 768px)';
-
-$bps: (
-    xs: $bp-xsmall,     
-    sm: $bp-small,
-    md: $bp-medium,
-    lg: $bp-large
-);
+@import 'breakpoints';
 
 $cols: 12;
 
@@ -20,37 +9,83 @@ $cols: 12;
     width: 100%;
     margin: 0 auto;
 
-    @extend %clearfix;    
+    @extend %clearfix;
+}
 
-    .row {
+.grid {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-auto-flow: dense;
+    column-count: 2;
+    grid-auto-rows: min-content;
+    padding: 0 1rem 1rem 1rem;
+
+    .card {
+        display: grid;
+        box-sizing: border-box;
         width: 100%;
-        padding: 0 -10px;
+    }
+}
 
-        .col {
-            width: 100%;
+.grid-two {
+    display: grid!important;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: min-content;
+    grid-auto-flow: dense;
+    grid-column-gap: 10px;
+}
+
+.grid-three {
+    display: grid!important;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: min-content;
+    grid-auto-flow: dense;
+    grid-column-gap: 10px;
+
+    & > span:nth-child(-n+3) {
+        background-color: #F3F3F3;
+        margin: -10px -10px 0;
+        padding: .5rem;
+    }
+
+    &.stats {
+        div {
+            padding: 3px 0;
         }
 
-        [class*='col-'] {
-            display: inline-block;
-            vertical-align: top;
-            width: 100%;
-            min-height: 1px;
+        grid-template-columns: 1fr 2fr 2fr;
+        & > div:nth-child(6n+1),
+        & > div:nth-child(6n+2),
+        & > div:nth-child(6n+3) {
+            background: #F8F8F8;
+            margin: 0 -10px;
+            padding-right: 10px;
+            padding-left: 10px;
         }
+    }
+}
 
-        @for $col from 1 through $cols {
-            .col-#{$col} {
-                width: 100% / $cols * $col;
-            }
-        }
+.title-item {
+    grid-column: 1 / -1;
+}
 
-        @each $size, $bp in $bps {
-            @media #{$bp} {
-                @for $col from 1 through $cols {
-                    .col-#{$col}-#{$size} {
-                        width: 100% / $cols * $col;
-                    }
-                }
-            }            
+.title-item-with-image {
+    margin-bottom: .5rem;
+}
+
+@media #{$bp-gtsmall} {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px,1fr))!important;
+        grid-auto-rows: 14px;
+
+        .card {
+            display: grid;
+            grid-auto-columns: 1fr;
+            padding: 10px;
         }
     }
 }

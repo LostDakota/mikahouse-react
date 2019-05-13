@@ -31,29 +31,6 @@ const Outlet = () => (
   </>
 )
 
-// const Outlet = () => (
-//   <>
-//     <Route render={({ location }) => {
-//       return (
-//         <TransitionGroup>
-//           <CSSTransition key={location.key} timeout={10000} classNames="fade">
-//             <Switch location={location}>
-//               <Route exact path="/" component={HomeContainer}></Route>
-//               <Route path="/media" component={MediaContainer}></Route>
-//               <Route path="/controls" component={ControlsContainer}></Route>
-//               <Route exact path="/security" component={SecurityContainer}></Route>
-//               <Route path="/security/events" component={SecurityEventsContainer}></Route>
-//               <Route path="/services" component={ServicesContainer}></Route>
-//               <Route path="/events" component={EventsContainer}></Route>
-//             </Switch>
-//           </CSSTransition>
-//         </TransitionGroup>
-//       )
-//     }}>
-//     </Route>
-//   </>
-// )
-
 const Routes = props => {
   return (
     <>

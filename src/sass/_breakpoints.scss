@@ -19,3 +19,16 @@ $breakpoints: (
           + "Available breakpoints are: #{map-keys($breakpoints)}.";
     }
   }
+
+$bp-large: 'only screen and (min-width: 1200px)';
+$bp-medium: 'only screen and (min-width: 992px) and (max-width: 1199px)';
+$bp-small: 'only screen and (min-width: 769px) and (max-width: 991px)';
+$bp-xsmall: 'only screen and (max-width: 768px)';
+$bp-gtsmall: 'only screen and (min-width: 769px)';
+
+$bps: (
+    xs: $bp-xsmall,     
+    sm: $bp-small,
+    md: $bp-medium,
+    lg: $bp-large
+);

@@ -11,6 +11,12 @@ import { Devices } from "./Devices";
 class ServicesContainer extends Component {
     state = {};
 
+    componentDidUpdate() {
+        setTimeout(function(){
+            window.resizeAllGridItems();
+        }, 1000);
+    }
+
     componentDidMount() {
         TitleService.SetTitle('Services');
         this.setState({loading: true})
@@ -51,29 +57,25 @@ class ServicesContainer extends Component {
     render() {
         if (!this.state.loading) {
             return (
-                <div class="row">
+                <>
                     <ServerStats stats={this.state.stats} />                    
                     
-                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
-                        <p className="t-center t-bold">Disk Usage</p>
-                        <div className="card">
+                    <div className="card">
+                        <div className="content">
+                            <p className="t-center t-bold title-item m-5-b">Storage</p>
                             <Drives drives={this.state.drives} />
-                        </div>
+                        </div>                        
                     </div>
 
-                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
-                        <p className="t-center t-bold">Connected Devices</p>
-                        <div className="card">
-                            <div className="row">
-                                <div className="col-2 t-bold">IP</div>
-                                <div className="col-5 t-bold">Name</div>
-                                <div className="col-5 t-bold">Last Connection</div>
-                                <hr />
-                            </div>
+                    <div className="card o-hidden">
+                        <div className="content grid-three stats">
+                            <span className="t-bold m-5-b">IP</span>
+                            <span className="t-bold m-5-b">Name</span>
+                            <span className="t-bold m-5-b">Last Connection</span>
                             <Devices devices={this.state.devices} />
-                        </div>
+                        </div>                        
                     </div>
-                </div>
+                </>
             )
         }
         return (<Loader />);

@@ -12,6 +12,12 @@ import { PopUp } from "./PopUp";
 class MediaContainer extends Component {
     state = {};
 
+    componentDidUpdate() {
+        setTimeout(() => {
+            window.resizeAllGridItems();
+        }, 1000);
+    }
+
     componentDidMount() {
 
         TitleService.SetTitle('Media');
@@ -59,24 +65,30 @@ class MediaContainer extends Component {
     render() {
         if (!this.state.loading) {
             return (
-                <div class="row">
-                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
-                        <p className="t-center t-bold">Plex</p>
-                        <Plex plex={this.state.plex} />
+                <>
+                    <div className="card">
+                        <div className="content">
+                            <p className="t-center t-bold m-5-b">Plex</p>
+                            <Plex plex={this.state.plex} />
+                        </div>
+                    </div>                    
+                    
+                    <div className="card">
+                        <div className="content grid-three">
+                            <p className="t-center t-bold title-item m-5-b">Newest Shows</p>
+                            <Shows toggle={this.toggleModal} shows={this.state.newest} />
+                        </div>                        
                     </div>
                     
-                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
-                        <p className="t-center t-bold">Newest Shows</p>
-                        <Shows toggle={this.toggleModal} shows={this.state.newest} />
-                    </div>
-                    
-                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
-                        <p className="t-center t-bold">Newest Movies</p>
-                        <Movies movies={this.state.movies} />
+                    <div className="card">
+                        <div className="content grid-three">
+                            <p className="t-center t-bold title-item m-5-b">Newest Movies</p>
+                            <Movies movies={this.state.movies} />
+                        </div>                        
                     </div>
                     
                     <PopUp toggle={this.toggleModal} display={this.state.showModal} show={this.state.show} />
-                </div>
+                </>
             )
         }
         return (

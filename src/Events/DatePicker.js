@@ -4,8 +4,8 @@ import moment from "moment";
 export let DatePicker = props => {
     if (props.days) {
         return (
-            <div className="col-12">
-                <div className="card">
+            <div className="card">
+                <div className="content">
                     <select style={{ 'width': '100%', 'border': 'none' }} onChange={(value) => {props.switch(value)}} defaultValue={props.selected || ''}>
                         <option value='' disabled>Select a day</option>
                         {props.days.map((item, i) => {
@@ -15,7 +15,7 @@ export let DatePicker = props => {
                         })}
                     </select>
                 </div>
-            </div>
+            </div>            
         )
     }
     return '';

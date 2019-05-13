@@ -5,11 +5,9 @@ const title = "Who's Home";
 let buildPeopleCards = people => {
     return people.map((user, i) => {
         return (
-            <div key={i} className="col-4">
-                <div className="card">
-                    <img alt={user.name} src={`/images/${user.name.toLowerCase()}.webp`} />
-                    <p className="t-small t-muted t-center m-5-t">{user.name} - {user.status}</p>
-                </div>
+            <div key={i}>
+                <img id={`person-${i}`} className="people-avatar" alt={user.name} src={`/images/${user.name.toLowerCase()}.webp`} />
+                <p className="t-small t-muted t-center m-5-t normal-line-height">{user.name} - {user.status}</p>
             </div>
         )
     })
@@ -17,9 +15,11 @@ let buildPeopleCards = people => {
 
 const People = props => {
     return (
-        <div className="col-12-xs col-6-sm col-6-md col-6-lg">
-            <p className="t-center t-bold">{title}</p>
-            {buildPeopleCards(props.people)}
+        <div className="card">
+            <div className="content grid-three">
+                <p className="t-center t-bold title-item m-5-b">{title}</p>
+                {buildPeopleCards(props.people)}                
+            </div>                        
         </div>
     )
 }

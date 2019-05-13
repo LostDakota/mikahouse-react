@@ -22,6 +22,12 @@ class HomeContainer extends Component {
         events: []
     };
 
+    componentDidUpdate() {
+        setTimeout(function(){
+            window.resizeAllGridItems();
+        }, 1000);
+    }
+
     componentDidMount() {
         TitleService.SetTitle('Home');
 
@@ -74,12 +80,15 @@ class HomeContainer extends Component {
             .then(data => {
                 localStorage.setItem('authenticated', true);
                 this.setState({ loading: false });
+                let items = document.getElementsByClassName('item');
+                items.forEach(item => {
+                    console.log(item);
+                })
             })
             .catch(err => {
                 localStorage.setItem('authenticated', false);
                 window.location.href = '/login';
-            })
-
+            });
     }
 
     render() {
@@ -90,7 +99,7 @@ class HomeContainer extends Component {
                     <LastEvent event={this.state.lastevent} />
                     <ServerStats stats={this.state.stats} />
                     <Newest newest={this.state.newest} />
-                    <Events events={this.state.events} />
+                    <Events events={this.state.events} />                    
                 </>
             )
         }

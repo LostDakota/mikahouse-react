@@ -6,9 +6,11 @@ class ServerStats extends Component {
     render() {
         if (this.props.stats) {
             return (
-                <div className="col-12-xs col-6-sm col-6-md col-6-lg">
-                    <p className="t-center t-bold">{title}</p>
-                    {buildStats(this.props.stats)}
+                <div className="card">
+                    <div className="content grid-three">
+                        <p className="t-center t-bold title-item">{title}</p>
+                        {buildStats(this.props.stats)}
+                    </div>
                 </div>
             )
         }
@@ -25,12 +27,10 @@ let icons = {
 let buildStats = stats => {
     return stats.map((stat, i) => {
         return (
-            <div key={i} className="col-4">
-                <div className="card sm-border t-center">
-                    <i className={`fas ${icons[stat.name]} server-icons m-5-y c-lightgray`}></i>
-                    <p className="t-small t-muted t-center m-5-t">{stat.name}</p>
-                    <p className="t-small t-muted t-center m-5-b">{stat.value}</p>
-                </div>
+            <div key={i} className="t-center">
+                <i className={`fas ${icons[stat.name]} server-icons m-5-y c-lightgray`}></i>
+                <p className="t-small t-muted t-center m-5-t">{stat.name ? stat.name : '...'}</p>
+                <p className="t-small t-muted t-center m-5-b">{stat.value ? stat.value : '...'}</p>
             </div>
         )
     })

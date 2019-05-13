@@ -26,6 +26,12 @@ class SecurityContainer extends Component {
             })
     }
 
+    componentDidUpdate() {
+        setTimeout(() => {
+            window.resizeAllGridItems();
+        }, 1000);
+    }
+
     componentDidMount() {
         TitleService.SetTitle('Security');
         this.setState({ loading: true });
@@ -67,21 +73,18 @@ class SecurityContainer extends Component {
     render() {
         if (!this.state.loading) {
             return (
-                <div class="row">
-                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
-                        <p className="t-center t-bold">System Status</p>
-                        <div class="row">
+                <>
+                    <div className="card">
+                        <div className="content grid-two">
+                            <p className="t-center t-bold title-item">System Status</p>
                             <ServerStatus status={this.state.status} toggle={this.toggleSecurity} />
                             <Events events={this.state.eventCount} />
-                        </div>                        
+                        </div>
+                                                
                     </div>
 
-                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
-                        <p className="t-center t-bold">Current Views</p>
-                        <Cameras cameras={this.state.cameras} />
-                    </div>
-                    
-                </div>
+                    <Cameras cameras={this.state.cameras} />                    
+                </>
             );
         }
         return (<Loader />);

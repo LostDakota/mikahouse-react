@@ -5,14 +5,13 @@ export const PopUp = props => {
     if(props.show){
         return (
             <>
-                <div onClick={props.toggle} className={`shade ${props.display ? 'show' : ''}`}>
-                    <div class="d-none-sm col-3"></div>
-                    <div className="col-12-xs col-6-sm col-6-md col-6-lg">
-                        <div className='card'>
+                <div onClick={props.toggle} className={`shade ${props.display ? 'show' : 'none'}`}>
+                    <div className='card popup'>
+                        <div className="content">
                             <img alt={props.show.name} src={`${Config.Host}${props.show.fanart}`} />
                             <p className='t-center m-5-b'>{props.show.showtitle} - {props.show.name}</p>
                             <p className="t-small">{props.show.description}</p>
-                        </div>
+                        </div>                            
                     </div>
                 </div>
             </>

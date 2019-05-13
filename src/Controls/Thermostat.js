@@ -30,9 +30,9 @@ buildTicks();
 
 const Thermostat = props => {
     return (
-        <div className="col-12-xs col-6-sm col-6-md col-6-lg">
-            <p className="t-center t-bold">Thermostat</p>
-            <div className="card">
+        <div className="card">
+            <div className="content">
+                <p className="t-center t-bold m-5-b">Thermostat</p>
                 <div className="card-buffer">
                     <div className="shadow"></div>
                     <div className={`dial ${colorEvaluator(props.stat.heater)}`}>
@@ -55,7 +55,7 @@ const Thermostat = props => {
                         </p>
                     </div>
                 </div>
-            </div>
+            </div>                
         </div>
     )
 }
