@@ -80,10 +80,6 @@ class HomeContainer extends Component {
             .then(data => {
                 localStorage.setItem('authenticated', true);
                 this.setState({ loading: false });
-                let items = document.getElementsByClassName('item');
-                items.forEach(item => {
-                    console.log(item);
-                })
             })
             .catch(err => {
                 localStorage.setItem('authenticated', false);
