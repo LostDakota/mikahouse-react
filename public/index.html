@@ -31,8 +31,10 @@
       grid = document.getElementsByClassName("grid")[0];
       rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
       rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-      rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height + rowGap * 2)/(rowHeight + rowGap));
-      item.style.gridRowEnd = "span " + rowSpan;
+      if(item.querySelector('.content')){
+        rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height + rowGap * 2)/(rowHeight + rowGap));
+        item.style.gridRowEnd = "span " + rowSpan;
+      }      
     }
 
     window.resizeAllGridItems = function (){
