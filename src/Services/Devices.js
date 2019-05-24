@@ -13,15 +13,15 @@ export const Devices = props => {
         return devices.map((device, i) => {
             return (
                 <>
-                <div>
-                    {device.ip.split('.')[3]}
-                </div>
-                <div>
-                    {device.name}
-                </div>
-                <div>
-                    {moment.unix(device.date).fromNow()}
-                </div>
+                    <div>
+                        {device.ip.split('.')[3]}
+                    </div>
+                    <div>
+                        {device.name}
+                    </div>
+                    <div>
+                        {moment.unix(device.date).fromNow()}
+                    </div>
                 </>
             )
         })

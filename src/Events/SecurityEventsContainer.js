@@ -14,6 +14,14 @@ class SecurityEventsContainer extends Component {
         this.setState({ selected: event.target.value });
     }
 
+    getFormatedToday = () => {
+        var date = new Date();
+        date = date.getUTCFullYear() + '-' +
+            ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
+            ('00' + date.getUTCDate()).slice(-2);
+        return date;
+    }
+
     getVideos = date => {
         this.setState({ loading: true });
         fetch(`${Config.Api}/security/todaysevents/${date}`)
@@ -35,6 +43,7 @@ class SecurityEventsContainer extends Component {
     componentDidMount() {
         TitleService.SetTitle("Captured Events");
         this.setState({ loading: true });
+        this.setState({ selected: `${this.getFormatedToday()}T04:00:00.000Z`})
         fetch(`${Config.Api}/security/days`)
             .then(data => {
                 return data.json()
@@ -44,7 +53,7 @@ class SecurityEventsContainer extends Component {
             });
 
 
-        this.getVideos(new Date());
+        this.getVideos(this.getFormatedToday());
     }
 
     render() {

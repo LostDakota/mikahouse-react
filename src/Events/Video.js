@@ -23,7 +23,7 @@ export const Video = props => {
         }
         return (
             <div className="card">
-                <div class="content">
+                <div className="content">
                 No events for the day
                 </div>                
             </div>
