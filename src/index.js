@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+// import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
 
@@ -15,8 +15,4 @@ ReactDOM.render((
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 
-if(localStorage.getItem('authenticated') === true) {
-    serviceWorker.register();
-} else {
-    serviceWorker.unregister();
-}
+// serviceWorker.register();

@@ -45,6 +45,12 @@
     }
 
     window.onresize = window.resizeAllGridItems();
+
+    (function(){
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+      }
+    })();
   </script>
 
 </body>
