@@ -1,7 +1,14 @@
 import React from "react";
 
-let colorEvaluator = heater => {
-    return heater ? 'c-orange-bg' : 'c-blackish-bg';
+let colorEvaluator = stats => {
+    let isCool = stats.type === 'cool';
+    if(isCool && stats.current > stats.target){
+        return 'c-blue-bg';
+    } else if(!isCool && stats.current < stats.target){
+        return 'c-orange-bg';
+    } else {
+        return 'c-blackish-bg';
+    }
 }
 
 let ticksArray = [];
@@ -35,22 +42,22 @@ const Thermostat = props => {
                 <p className="t-center t-bold m-5-b">Thermostat</p>
                 <div className="card-buffer">
                     <div className="shadow"></div>
-                    <div className={`dial ${colorEvaluator(props.stat.heater)}`}>
+                    <div className={`dial ${colorEvaluator(props.stat)}`}>
                         {ticksArray}
-                        <div className={`control-mask ${colorEvaluator(props.stat.heater)}`}>
+                        <div className={`control-mask ${colorEvaluator(props.stat)}`}>
                             <i className={`fa fa-chevron-down control ${props.loading ? 'disabled' : ''}`} onClick={() => { props.stat.changeTemp(-1) }}></i>
                             <i className={`fa fa-chevron-up control ${props.loading ? 'disabled' : ''}`} onClick={() => { props.stat.changeTemp(1) }}></i>
                             <div className="divider"></div>
                         </div>
 
                         {pin(props.stat.current, 'pin')}
-                        <div className={`mask ${colorEvaluator(props.stat.heater)}`}></div>
+                        <div className={`mask ${colorEvaluator(props.stat)}`}></div>
                         {pin(props.stat.target, 'peg')}
-                        <div className={`mask-2 ${colorEvaluator(props.stat.heater)}`}></div>
+                        <div className={`mask-2 ${colorEvaluator(props.stat)}`}></div>
 
                         <div className="current-temperature c-white">{props.stat.current}&deg;</div>
                         <p className="target-temperature t-bold c-white">
-                            {props.loading ? 'Loading...' : `Heat set to ${props.stat.target}`}<br />
+                            {props.loading ? 'Loading...' : `${props.stat.type === 'cool' ? 'Air' : 'Heat'} set to ${props.stat.target}`}<br />
                             <i className={`fa therm-icon ${props.stat.away ? 'fa-running' : 'fa-home'}`} style={{'marginTop': '20px', 'fontSize': '1.5rem'}}></i>
                         </p>
                     </div>
