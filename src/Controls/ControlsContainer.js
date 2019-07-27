@@ -83,7 +83,7 @@ class ControlsContainer extends Component {
             })
 
         this.setState({
-            toggleDoor: (e => {
+            toggleDoor: e => {
                 doorIcons('loading')
                 fetch(`${Config.Api}/control/garage`)
                     .then(data => {
@@ -92,7 +92,7 @@ class ControlsContainer extends Component {
                     .catch(err => {
                         doorIcons('failure')
                     })
-            })
+            }
         });
     }
 

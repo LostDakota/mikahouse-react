@@ -11,6 +11,18 @@ import { Events } from "./Events";
 class SecurityContainer extends Component {
     state = {};
 
+    refreshImage = (id, element) => {
+        return new Promise((resolve, reject) => {
+            fetch(`${Config.Api}/security/camera/${id + 1}`)
+                .then(response => {
+                    return response.text();
+                })
+                .then(url => {
+                    element.setAttribute('src', `${Config.Host}${url}`);
+                });
+        });        
+    }
+
     toggleSecurity = () => {
         let temp = this.state.status;
         temp.loading = true;
@@ -35,6 +47,24 @@ class SecurityContainer extends Component {
     componentDidMount() {
         TitleService.SetTitle('Security');
         this.setState({ loading: true });
+        this.setState({isLive: false});
+        this.setState({
+            liveAction: e => {
+                const element = e.target;
+                const id = parseInt(e.target.id.replace('camera-', ''));
+                if(e && !this.state.isLive){
+                    this.setState({isLive: true});
+                    document.getElementById(`live-controls-${id}`).classList.add('show');
+                    this.interval = setInterval(() => {
+                        this.refreshImage(id, element);
+                    }, 1000);
+                } else {
+                    clearInterval(this.interval);
+                    this.setState({isLive: false});
+                    document.querySelector('.live-controls.show').classList.remove('show');
+                }
+            }
+        });
 
         let status = fetch(`${Config.Api}/security/status`)
             .then(data => {
@@ -83,7 +113,7 @@ class SecurityContainer extends Component {
                                                 
                     </div>
 
-                    <Cameras cameras={this.state.cameras} />                    
+                    <Cameras cameras={this.state.cameras} live={this.state.liveAction} />                    
                 </>
             );
         }

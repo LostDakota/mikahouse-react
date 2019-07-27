@@ -35,3 +35,15 @@
 .card-buffer {
     position: relative;
 }
+
+.live-controls {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 2rem;
+    color: white;
+    display: none;
+    &.show{
+        display: block;
+    }
+}
