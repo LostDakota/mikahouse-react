@@ -85,6 +85,26 @@ class HomeContainer extends Component {
                 localStorage.setItem('authenticated', false);
                 window.location.href = '/login';
             });
+
+        this.setState({lastVid: e => {
+            var elem = e.target;
+            let day = new Date(this.state.lastevent.time).toISOString();
+            //2019-07-26T04:00:00.000Z
+            fetch(`${Config.Api}/security/todaysevents/${day.split('T')[0]}T04:00:00.000Z`)
+                .then(response => {
+                    return response.json();
+                })
+                .then(json => {
+                    let video = json[0];
+                    let lastVid = document.createElement('video');
+                    lastVid.setAttribute('src', `${Config.Host}${video.video}`);
+                    lastVid.setAttribute('poster', `${Config.Host}${video.poster}`);
+                    lastVid.setAttribute('controls', true);
+                    lastVid.setAttribute('autoplay', true);
+                    lastVid.style.width = '100%';
+                    elem.parentNode.replaceChild(lastVid, elem);
+                });
+        }})
     }
 
     render() {
@@ -92,7 +112,7 @@ class HomeContainer extends Component {
             return (
                 <>
                     <People people={this.state.users} />
-                    <LastEvent event={this.state.lastevent} />
+                    <LastEvent event={this.state.lastevent} lastVid={this.state.lastVid}/>
                     <ServerStats stats={this.state.stats} />
                     <Newest newest={this.state.newest} />
                     <Events events={this.state.events} />                    

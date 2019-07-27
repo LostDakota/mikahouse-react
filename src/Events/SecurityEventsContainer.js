@@ -46,14 +46,12 @@ class SecurityEventsContainer extends Component {
         this.setState({ selected: `${this.getFormatedToday()}T04:00:00.000Z`})
         fetch(`${Config.Api}/security/days`)
             .then(data => {
+                this.getVideos(this.selected);
                 return data.json()
             })
             .then(data => {
                 this.setState({ days: data });
             });
-
-
-        this.getVideos(this.getFormatedToday());
     }
 
     render() {
