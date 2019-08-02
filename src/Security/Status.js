@@ -17,13 +17,8 @@ const baseClasses = [
     'c-lightgray'
 ]
 
-const buildClasses = status => {
-    return baseClasses.concat(statusIcon(status)).join(' ');
-}
-
-let statusText = status => {
-    return status === 0 ? 'System is Disabled' : 'System is Active';
-}
+const buildClasses = status => baseClasses.concat(statusIcon(status)).join(' ');
+const statusText = status => status === 0 ? 'System is Disabled' : 'System is Active';
 
 export let ServerStatus = props => {
     if (props.status) {

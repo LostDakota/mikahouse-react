@@ -21,8 +21,8 @@ const doorIcons = (step) => {
     let successIcons = ['fa-warehouse', 'c-blue'];
     let failureIcons = ['fa-sad-tear', 'c-orange'];
     let loadingIcons = ['fa-spin', 'fa-circle-notch', 'c-lightgray'];
-
     let garage = document.querySelector('#door-icon');
+    
     garage.classList = '';
 
     if (step === 'loading') {
