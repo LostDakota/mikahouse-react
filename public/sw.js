@@ -56,6 +56,5 @@ var evaluateCacheable = function(url) {
   if(url.indexOf('?') !== -1 || url.indexOf('mp4') > -1)
     return false;
   var shouldCache = cacheableAssetTypes.map(type => url.indexOf(type) != -1);
-  return shouldCache.includes(true);
-  
+  return shouldCache.includes(true);  
 }
