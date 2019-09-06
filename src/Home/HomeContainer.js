@@ -77,11 +77,11 @@ class HomeContainer extends Component {
             });
 
         Promise.all([users, event, stats, newest, events])
-            .then(data => {
+            .then(() => {
                 localStorage.setItem('authenticated', true);
                 this.setState({ loading: false });
             })
-            .catch(err => {
+            .catch(() => {
                 localStorage.setItem('authenticated', false);
                 window.location.href = '/login';
             });

@@ -10,7 +10,6 @@ const LastEvent = props => {
     if (props.event) {
         let formattedTime = moment(props.event.time).format('MMM Do YYYY h:mma');
         let isToday = moment(props.event.time).isSame(new Date(), 'day');
-        console.log(isToday);
         return (
             <div className="card">
                 <div className="content">

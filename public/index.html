@@ -24,7 +24,7 @@
   <div id="root"></div>
   <script>
     document.addEventListener('click', function (e) {
-      navigator.vibrate('50');
+      navigator.vibrate('20');
     });
 
     window.resizeGridItem = function (item){
@@ -50,7 +50,17 @@
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js');
       }
+      setInterval(() => {
+        navigator.geolocation.getCurrentPosition(position => {
+          fetch(`http://192.168.1.123:1337/api/users/location/Drew/${position.coords.latitude}/${position.coords.longitude}`, {
+            mode: 'no-cors',
+            method: 'POST'
+          })
+        });
+      }, 6000);
     })();
+
+    document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';
   </script>
 
 </body>
