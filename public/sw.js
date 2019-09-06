@@ -57,4 +57,5 @@ var evaluateCacheable = function(url) {
     return false;
   var shouldCache = cacheableAssetTypes.map(type => url.indexOf(type) != -1);
   return shouldCache.includes(true);
+  
 }
