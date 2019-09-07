@@ -25,18 +25,18 @@ self.addEventListener('fetch', event => {
     caches.open(cacheName)
       .then(async cache => {
         const response = await cache.match(event.request);
-        return response || fetch(event.request)
+        return response || fetch(event.request, { credentials: 'include'})
           .then(resource => {
             var url = event.request.url;
             if(url && evaluateCacheable(url)) {
               cache.put(event.request, resource.clone())
-                .catch(err => {})
+                .catch(() => {})
             }
             return resource;
           })
-          .catch(err => {})
+          .catch(() => {})
       })
-      .catch(err => {})
+      .catch(() => {})
   );
 });
 
