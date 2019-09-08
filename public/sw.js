@@ -20,12 +20,22 @@ self.addEventListener('install', e => {
   );
 });
 
+let evaluateDomain = url => {
+  if(url.indexOf('mika') === -1){
+    return {};
+  } else {
+    return {
+      credentials: 'include'
+    }
+  }
+}
+
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.open(cacheName)
       .then(async cache => {
         const response = await cache.match(event.request);
-        return response || fetch(event.request, { credentials: 'include'})
+        return response || fetch(event.request, evaluateDomain)
           .then(resource => {
             var url = event.request.url;
             if(url && evaluateCacheable(url)) {
