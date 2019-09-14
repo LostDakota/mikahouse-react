@@ -36,3 +36,16 @@ a {
 .normal-line-height {
     line-height: normal;
 }
+
+.garage-status {
+    position: absolute;
+    left: .9rem;
+    bottom: -5px;
+    color: $blue;
+    font-size: 2rem;
+    z-index: 2;
+}
+
+.fa-warehouse {
+    position: relative;
+}

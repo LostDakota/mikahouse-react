@@ -16,6 +16,15 @@ const getThermostat = () => {
     })
 }
 
+const getGarageStatus = () => {
+    return new Promise((resolve, reject) => {
+        fetch(`${Config.Api}/control/garage/status`)
+            .then(data => {
+                resolve(data.json());
+            });
+    });
+}
+
 const doorIcons = (step) => {
     let baseClasses = ['fa', 'server-icons', 'm-5-y']
     let successIcons = ['fa-warehouse', 'c-blue'];
@@ -49,7 +58,8 @@ class ControlsContainer extends Component {
             heater: false,
             current: 70
         },
-        loading: true
+        loading: true,
+        garageStatus: false
     };
     mounted = true;
 
@@ -61,6 +71,13 @@ class ControlsContainer extends Component {
 
     componentDidMount() {
         TitleService.SetTitle('Controls');
+
+        getGarageStatus()
+            .then(data => {
+                if(data.status){
+                    this.setState({garageStatus: true});
+                }
+            });
 
         getThermostat()
             .then(data => {
@@ -105,7 +122,7 @@ class ControlsContainer extends Component {
             return (
                 <>
                     <Thermostat stat={this.state.thermostat} loading={this.state.loading} />
-                    <Garage toggle={this.state.toggleDoor} />     
+                    <Garage status={this.state.garageStatus} toggle={this.state.toggleDoor} />     
                 </>
             )
         }
