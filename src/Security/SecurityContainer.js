@@ -55,9 +55,9 @@ class SecurityContainer extends Component {
                 if(e && !this.state.isLive){
                     this.setState({isLive: true});
                     document.getElementById(`live-controls-${id}`).classList.add('show');
-                    this.interval = setInterval(() => {
-                        this.refreshImage(id, element);
-                    }, 1000);
+                    // this.interval = setInterval(() => {
+                    //     this.refreshImage(id, element);
+                    // }, 1000);
                 } else {
                     clearInterval(this.interval);
                     this.setState({isLive: false});
