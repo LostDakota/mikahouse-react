@@ -11,10 +11,10 @@ export const Video = props => {
                     return (
                         <div key={i} className="card">
                             <div className="content">
-                                <video style={{ 'maxWidth': '100%' }} preload={'none'} controls poster={`${Config.Host}${event.poster}`}>
-                                <source src={`${Config.Host}${event.video}`} type={'video/mp4'}></source>
+                                <video style={{ 'maxWidth': '100%' }} preload={'none'} controls>
+                                <source src={`${Config.Images}${event.movie}`} type={'video/mp4'} poster={`${Config.Images}${event.poster}`}></source>
                                 </video>
-                                <p className="t-small t-muted t-right">{moment(event.time).format('MMM Do YYYY h:mma')}</p>
+                                <p className="t-small t-muted t-right">{moment(event.stamp).format('MMM Do YYYY h:mma')}</p>
                             </div>                            
                         </div>
                     )
