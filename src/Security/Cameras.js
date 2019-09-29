@@ -8,9 +8,9 @@ let cameraCards = props => {
         return (
             <div key={i} className="card">
                 <div className="content">
-                    <p className="t-center t-bold title-item m-5-b">{i === 0 ? 'Backroom' : 'Living Room'}</p>
+                    <p className="t-center t-bold title-item m-5-b">{cam.name}</p>
                     <div className="blur-mask">
-                        <img onClick={props.live} id={`camera-${i}`} className={'security-images blur'} alt="Right Now" src={`/images/fallback${i}.jpg`} onLoad={ImageTransition(`camera-${i}`, `${Config.Host}${cam}`)} />
+                        <img onClick={props.live} id={`camera-${i}`} className={'security-images blur'} alt="Right Now" src={`/images/fallback${i}.jpg`} onLoad={ImageTransition(`camera-${i}`, `${Config.Host}${cam.image}`)} />
                         <i className={'fa fa-pause live-controls'} id={`live-controls-${i}`}></i>
                     </div>
                 </div>                
