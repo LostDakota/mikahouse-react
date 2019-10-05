@@ -45,7 +45,7 @@ class HomeContainer extends Component {
                 return data.json();
             })
             .then(data => {
-                this.setState({ lastevent: data });
+                this.setState({ lastevent: `${data}?ts=${new Date().getTime() / 1000}` });
                 return true;
             });
 
