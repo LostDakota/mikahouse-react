@@ -12,15 +12,8 @@ class SecurityContainer extends Component {
     state = {};
 
     refreshImage = (id, element) => {
-        return new Promise((resolve, reject) => {
-            fetch(`${Config.Api}/security/camera/${id + 1}`)
-                .then(response => {
-                    return response.text();
-                })
-                .then(url => {
-                    element.setAttribute('src', `${Config.Host}${url}`);
-                });
-        });        
+        var src = element.attributes.src.value.split('?')[0];
+        element.setAttribute('src', `${src}?ts=${new Date().getSeconds()}`);
     }
 
     toggleSecurity = () => {
@@ -55,9 +48,9 @@ class SecurityContainer extends Component {
                 if(e && !this.state.isLive){
                     this.setState({isLive: true});
                     document.getElementById(`live-controls-${id}`).classList.add('show');
-                    // this.interval = setInterval(() => {
-                    //     this.refreshImage(id, element);
-                    // }, 1000);
+                    this.interval = setInterval(() => {
+                        this.refreshImage(id, element);
+                    }, 1000);
                 } else {
                     clearInterval(this.interval);
                     this.setState({isLive: false});
