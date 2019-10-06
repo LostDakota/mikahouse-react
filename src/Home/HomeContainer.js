@@ -14,7 +14,7 @@ class HomeContainer extends Component {
     state = {
         users: [],
         lastevent: {
-            image: '/images/security/last.jpg',
+            image: `/images/motion/lastsnap.jpg?=ts${new Date().getTime() / 1000}`,
             time: 'Loading...'
         },
         stats: [],
@@ -45,7 +45,8 @@ class HomeContainer extends Component {
                 return data.json();
             })
             .then(data => {
-                this.setState({ lastevent: `${data}?ts=${new Date().getTime() / 1000}` });
+                console.log(data);
+                this.setState({ lastevent: `${data.image}?ts=${new Date().getTime() / 1000}` });
                 return true;
             });
 
