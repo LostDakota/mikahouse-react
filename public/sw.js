@@ -3,7 +3,6 @@ var cacheName = 'v$versionNumber::mika.house';
 var filesToCache = [
   '//use.fontawesome.com/releases/v5.6.3/css/all.css',
   '//fonts.googleapis.com/css?family=Raleway',
-  '/images/security/last.jpg',
   '/images/fallback0.jpg',
   '/images/fallback1.jpg'
 ];

@@ -15,7 +15,7 @@ const LastEvent = props => {
                 <div className="content">
                     <p className="t-center t-bold title-item-with-image">{title}</p>
                     <div className="blur-mask">
-                        <img onClick={props.lastVid} id="last-event" className="security-images blur" alt="" src={`${Config.Host}/images/security/last.jpg`} onLoad={ImageTransition('last-event', `${Config.Host}${props.event.image}`)} />
+                        <img onClick={props.lastVid} id="last-event" className="security-images blur" alt="" src={`${Config.Host}/images/motion/lastsnap.jpg`} onLoad={ImageTransition('last-event', `${Config.Host}${props.event.image}`)} />
                     </div>
                     <p className="t-small t-muted t-right m-5-t">{isToday ? '(Today)': ''} {formattedTime}</p>
                 </div>
