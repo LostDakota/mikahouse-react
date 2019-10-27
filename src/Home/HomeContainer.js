@@ -58,7 +58,7 @@ class HomeContainer extends Component {
                 return true;
             });
 
-        let newest = fetch(`${Config.Api}/media/newest`)
+        let newest = fetch(`${Config.Api}/media/newest/1`)
             .then(data => {
                 return data.json()
             })
