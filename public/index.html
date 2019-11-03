@@ -10,15 +10,13 @@
 
   <title>Mikahouse Automation</title>
 
-  <link rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
-    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-    crossorigin="anonymous">
-
   <script>
-    document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';
+    document.cookie = 'resolution=' + Math.max(screen.width, screen.height) + ("devicePixelRatio" in window ? "," + devicePixelRatio : ",1") + '; path=/';
   </script>
-    
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -31,26 +29,26 @@
       navigator.vibrate('20');
     });
 
-    window.resizeGridItem = function (item){
+    window.resizeGridItem = function (item) {
       grid = document.getElementsByClassName("grid")[0];
       rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
       rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-      if(item.querySelector('.content')){
-        rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height + rowGap * 2)/(rowHeight + rowGap));
+      if (item.querySelector('.content')) {
+        rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height + rowGap * 2) / (rowHeight + rowGap));
         item.style.gridRowEnd = "span " + rowSpan;
-      }      
+      }
     }
 
-    window.resizeAllGridItems = function (){
+    window.resizeAllGridItems = function () {
       allItems = document.getElementsByClassName("card");
-      for(x = 0;x < allItems.length; x++){
-          window.resizeGridItem(allItems[x]);
+      for (x = 0; x < allItems.length; x++) {
+        window.resizeGridItem(allItems[x]);
       }
     }
 
     window.onresize = window.resizeAllGridItems();
 
-    (function(){
+    (function () {
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js');
       }

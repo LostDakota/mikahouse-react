@@ -5,12 +5,13 @@ import Config from "../Shared/Config";
 import { Loader } from "../Shared/Loader";
 import { EvaluateIcon, IconColor } from "../Home/Events";
 import moment from "moment";
+import { DatePicker } from "./DatePicker";
 
 const buildCards = events => {
     if (events.length === 0) {
         return (
             <div className="card">
-                <div classname="content">
+                <div className="content">
                     <h3 className="t-center">No Events Recorded Today</h3>
                 </div>                
             </div>
@@ -34,7 +35,14 @@ const buildCards = events => {
 
 class EventsContainer extends Component {
     state = {};
-    loading = true;
+    loading = true;    
+
+    setDate = event => {
+        this.setState({selected: event.target.value});
+        fetch(`${Config.Api}/events/day/${event.target.value}`)
+            .then(response => response.json())
+            .then(json => this.setState({events: json}));
+    }
 
     componentDidUpdate() {
         setTimeout(function(){
@@ -51,13 +59,18 @@ class EventsContainer extends Component {
             .then(data => {
                 this.loading = false;
                 this.setState({ events: data });
-            })
+            });
+
+        fetch(`${Config.Api}/security/days`)
+            .then(data => data.json())
+            .then(data => this.setState({days: data}));
     }
 
     render() {
         if (!this.loading) {
             return (
                 <>
+                    <DatePicker days={this.state.days} switch={this.setDate} selected={this.state.selected} />
                     {buildCards(this.state.events)}
                 </>
             )
