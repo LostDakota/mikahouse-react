@@ -24,7 +24,7 @@ class SecurityContainer extends Component {
             .then(response => {
                 return response.json();
             })
-            .then(data => {
+            .then(() => {
                 temp.loading = false;
                 temp.result = temp.result === 0 ? 1 : 0;
                 this.setState({ status : temp });
@@ -40,7 +40,7 @@ class SecurityContainer extends Component {
     componentDidMount() {
         TitleService.SetTitle('Security');
         this.setState({ loading: true });
-        this.setState({isLive: false});
+        this.setState({ isLive: false });
         this.setState({
             liveAction: e => {
                 const element = e.target;
@@ -64,7 +64,7 @@ class SecurityContainer extends Component {
                 return data.json();
             })
             .then(data => {
-                data['loading'] = false;
+                this.setState({ loading: false });
                 this.setState({ status: data });
                 return true;
             });

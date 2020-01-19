@@ -7,54 +7,72 @@ import { Video } from "./Video";
 import { Loader } from "../Shared/Loader";
 
 class SecurityEventsContainer extends Component {
-    state = {}
+    state = {
+        events: [],
+        pageIndex: 0,
+        hasMore: true,
+        fetching: false
+    }
 
     setDate = event => {
-        this.getVideos(event.target.value);
-        this.setState({ selected: event.target.value });
+        this.setState({ loading: true });
+        this.setState({ pageIndex: 0 });
+        this.setState({ selected: event.target.value }, () => this.getVideos());
     }
 
     getFormatedToday = () => {
         var date = new Date();
-        return  date.getUTCFullYear() + '-' +
-            ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
-            ('00' + date.getUTCDate()).slice(-2);
+        return date.getUTCFullYear() + '-' +
+                ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
+                ('00' + date.getUTCDate()).slice(-2);
     }
 
-    getVideos = date => {
-        this.setState({ loading: true });
-        fetch(`${Config.Api}/security/todaysevents/${date}`)
+    getVideos = () => {        
+        this.setState({ fetching: true });
+        fetch(`${Config.Api}/security/todaysevents/${this.state.selected}/${this.state.pageIndex}`)
             .then(response => {
                 return response.json();
             })
             .then(data => {
-                this.setState({ events: data });
-                this.setState({ loading: false });
-            })
+                this.setState({ events: data.concat(this.state.events) });
+                this.setState({ fetching: false });
+                if (data.length === 0 || data.length < 20) {
+                    this.setState({ hasMore: false });
+                } else {
+                    this.setState({ hasMore: true });
+                }
+
+                if(this.state.pageIndex === 0) {
+                    this.setState({ loading: false });
+                }
+            });
     }
 
-    componentDidUpdate() {
-        setTimeout(function(){
-            window.resizeAllGridItems();
-        }, 1000);
-    }
-    
     componentDidMount() {
         TitleService.SetTitle("Captured Events");
         this.setState({ loading: true });
-        this.setState({ selected: `${this.getFormatedToday()}T04:00:00.000Z`})
+        this.setState({ selected: `${this.getFormatedToday()}T04:00:00.000Z` });
         fetch(`${Config.Api}/security/days`)
             .then(data => {
-                this.getVideos(this.selected);
+                this.getVideos();
                 return data.json()
             })
             .then(data => {
                 this.setState({ days: data });
             });
+
+        window.onscroll = () => {
+            if(!this.state.hasMore || this.state.fetching) return;
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
+                this.setState({ pageIndex: this.state.pageIndex + 1}, () => {
+                    this.getVideos();
+                });
+            }
+        }
     }
 
     render() {
-        if(!this.state.loading){
+        if (!this.state.loading) {
             return (
                 <>
                     <DatePicker days={this.state.days} switch={this.setDate} selected={this.state.selected} />
