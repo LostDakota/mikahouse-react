@@ -17,17 +17,13 @@ class SecurityContainer extends Component {
     }
 
     toggleSecurity = () => {
-        let temp = this.state.status;
-        temp.loading = true;
-        this.setState({ status: temp })
+        this.setState({ status: { loading: true } });
         fetch(`${Config.Api}/security/state`)
             .then(response => {
                 return response.json();
             })
-            .then(() => {
-                temp.loading = false;
-                temp.result = temp.result === 0 ? 1 : 0;
-                this.setState({ status : temp });
+            .then(json => {                
+                this.setState({ status: json.result, loading: false });
             })
     }
 
