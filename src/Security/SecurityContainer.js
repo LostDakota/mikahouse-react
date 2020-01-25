@@ -65,7 +65,7 @@ class SecurityContainer extends Component {
                 return true;
             });
 
-        let eventCount = fetch(`${Config.Api}/security/todayseventcount`)
+        let eventCount = fetch(`${Config.Api}/security/todayseventcount/${new Date().toISOString()}`)
             .then(data => {
                 return data.json();
             })

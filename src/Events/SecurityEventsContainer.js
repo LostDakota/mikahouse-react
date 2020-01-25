@@ -34,10 +34,9 @@ class SecurityEventsContainer extends Component {
                 return response.json();
             })
             .then(data => {
-                this.setState({ events: data.events.concat(this.state.events) });
-                this.setState({ count: data.count });
+                this.setState({ events: this.state.events.concat(data) });
                 this.setState({ fetching: false });
-                if (this.state.events.length == this.state.count) {
+                if (this.state.events.length === this.state.count) {
                     this.setState({ hasMore: false });
                 } else {
                     this.setState({ hasMore: true });
@@ -52,7 +51,7 @@ class SecurityEventsContainer extends Component {
     componentDidMount() {
         TitleService.SetTitle("Captured Events");
         this.setState({ loading: true });
-        this.setState({ selected: `${this.getFormatedToday()}T04:00:00.000Z` });
+        this.setState({ selected: new Date().toISOString() });
         fetch(`${Config.Api}/security/days`)
             .then(data => {
                 this.getVideos();
