@@ -17,7 +17,7 @@ class SecurityEventsContainer extends Component {
     setDate = event => {
         this.setState({ loading: true });
         this.setState({ pageIndex: 0 });
-        this.setState({ selected: event.target.value }, () => this.getVideos());
+        this.setState({ selected: event.target.value }, () => this.getVideos(true));
     }
 
     getFormatedToday = () => {
@@ -27,8 +27,9 @@ class SecurityEventsContainer extends Component {
                 ('00' + date.getUTCDate()).slice(-2);
     }
 
-    getVideos = () => {        
+    getVideos = newDay => {        
         this.setState({ fetching: true });
+        if(newDay) this.setState({ events: [] });
         fetch(`${Config.Api}/security/todaysevents/${this.state.selected}/${this.state.pageIndex}`)
             .then(response => {
                 return response.json();
