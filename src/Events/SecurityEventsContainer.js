@@ -14,6 +14,12 @@ class SecurityEventsContainer extends Component {
         fetching: false
     }
 
+    localDateString = () => {
+        let d = new Date();
+        d.setHours((d.getTimezoneOffset() / 60) * -1);
+        return d.toISOString();
+    }
+
     setDate = event => {
         this.setState({ loading: true });
         this.setState({ pageIndex: 0 });
@@ -37,7 +43,7 @@ class SecurityEventsContainer extends Component {
             .then(data => {
                 this.setState({ events: this.state.events.concat(data) });
                 this.setState({ fetching: false });
-                if (this.state.events.length === this.state.count) {
+                if (data.length < 20) {
                     this.setState({ hasMore: false });
                 } else {
                     this.setState({ hasMore: true });
@@ -52,7 +58,7 @@ class SecurityEventsContainer extends Component {
     componentDidMount() {
         TitleService.SetTitle("Captured Events");
         this.setState({ loading: true });
-        this.setState({ selected: new Date().toISOString() });
+        this.setState({ selected: this.localDateString() });
         fetch(`${Config.Api}/security/days`)
             .then(data => {
                 this.getVideos();
@@ -71,6 +77,8 @@ class SecurityEventsContainer extends Component {
             }
         }
     }
+
+    componentDid
 
     render() {
         if (!this.state.loading) {

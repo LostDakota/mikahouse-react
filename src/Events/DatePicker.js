@@ -7,7 +7,7 @@ export let DatePicker = props => {
             <div className="card">
                 <div className="content">
                     <select style={{ 'width': '100%', 'border': 'none' }} onChange={(value) => {props.switch(value)}} defaultValue={props.selected || ''}>
-                        <option value='' disabled>Today</option>
+                        <option value={new Date().toISOString()}>Today</option>
                         {props.days.map((item, i) => {
                             return (
                                 <option key={i} value={item.day}>{moment(item.day).format('MMM Do YYYY')}</option>
