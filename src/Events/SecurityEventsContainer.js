@@ -43,7 +43,7 @@ class SecurityEventsContainer extends Component {
             .then(data => {
                 this.setState({ events: this.state.events.concat(data) });
                 this.setState({ fetching: false });
-                if (data.length < 20) {
+                if (data.length < 10) {
                     this.setState({ hasMore: false });
                 } else {
                     this.setState({ hasMore: true });
