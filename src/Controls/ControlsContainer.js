@@ -1,20 +1,9 @@
 import React, { Component } from "react";
 
-import Thermostat from "./Thermostat";
-
 import TitleService from "../Shared/TitleService";
 import Config from "../Shared/Config";
 import { Loader } from "../Shared/Loader";
 import { Garage } from "./Garage";
-
-const getThermostat = () => {
-    return new Promise((resolve, reject) => {
-        fetch(`${Config.Api}/control/thermostat`)
-            .then(data => {
-                resolve(data.json());
-            })
-    })
-}
 
 const getGarageStatus = () => {
     return new Promise((resolve, reject) => {
@@ -49,19 +38,11 @@ const doorIcons = (step) => {
     }
 }
 
-let controlTimeout = null;
-
 class ControlsContainer extends Component {
     state = {
-        thermostat: {
-            target: 70,
-            heater: false,
-            current: 70
-        },
         loading: true,
         garageStatus: false
     };
-    mounted = true;
 
     componentDidUpdate() {
         setTimeout(() => {
@@ -76,52 +57,28 @@ class ControlsContainer extends Component {
             .then(data => {
                 if(data.status){
                     this.setState({garageStatus: true});
+                    this.setState({ loading: false });
                 }
             });
 
-        getThermostat()
-            .then(data => {
-                data['changeTemp'] = val => {
-                    clearTimeout(controlTimeout);
-                    let temp = this.state.thermostat;
-                    temp.target = temp.target + val;
-                    this.setState({thermostat: temp});
-                    controlTimeout = setTimeout(() => {
-                        this.setState({ loading: true })
-                        fetch(`${Config.Api}/control/thermostat/${temp.target}`, { method: 'POST' })
-                            .then(() => {
-                                this.setState({ loading: false })
-                                setTimeout(() => {getThermostat()}, 3000);
-                            });
-                    }, 2000)
-                }
-                this.setState({ loading: false });
-                this.setState({ thermostat: data });
-            })
-
         this.setState({
-            toggleDoor: e => {
+            toggleDoor: () => {
                 doorIcons('loading')
                 fetch(`${Config.Api}/control/garage`)
-                    .then(data => {
+                    .then(() => {
                         doorIcons('success')
                     })
-                    .catch(err => {
+                    .catch(() => {
                         doorIcons('failure')
                     })
             }
         });
     }
 
-    componentWillUnmount() {
-        this.mounted = false;
-    }
-
     render() {
-        if (this.state.thermostat) {
+        if (!this.state.loading) {
             return (
                 <>
-                    <Thermostat stat={this.state.thermostat} loading={this.state.loading} />
                     <Garage status={this.state.garageStatus} toggle={this.state.toggleDoor} />     
                 </>
             )
