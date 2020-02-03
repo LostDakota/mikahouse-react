@@ -11,6 +11,12 @@ import { Events } from "./Events";
 class SecurityContainer extends Component {
     state = {};
 
+    localDateString = () => {
+        let d = new Date();
+        d.setHours((d.getTimezoneOffset() / 60) * -1);
+        return d.toISOString();
+    }
+
     refreshImage = (id, element) => {
         var src = element.attributes.src.value.split('?')[0];
         element.setAttribute('src', `${src}?ts=${new Date().getSeconds()}`);
@@ -65,7 +71,7 @@ class SecurityContainer extends Component {
                 return true;
             });
 
-        let eventCount = fetch(`${Config.Api}/security/todayseventcount/${new Date().toISOString()}`)
+        let eventCount = fetch(`${Config.Api}/security/todayseventcount/${this.localDateString()}`)
             .then(data => {
                 return data.json();
             })
