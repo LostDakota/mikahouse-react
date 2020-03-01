@@ -19,7 +19,7 @@ class SecurityContainer extends Component {
 
     refreshImage = (id, element) => {
         var src = element.attributes.src.value.split('?')[0];
-        element.setAttribute('src', `${src}?ts=${new Date().getSeconds()}`);
+        element.setAttribute('src', `${src}?ts=${new Date()}`);
     }
 
     toggleSecurity = () => {
